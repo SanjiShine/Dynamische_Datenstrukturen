@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Aufgabe03_LinkedList
 {
    public class LinkedList
     {
-        Node[] array;
-        int position = -1;
+        Node head;
 
         public class Node
         {
@@ -21,19 +19,6 @@ namespace Aufgabe03_LinkedList
         }
 
         public void Add(string value)
-        {
-            Node newValue = new Node(value);
-
-            if (head != null)
-            {
-                newValue.Successor = head;
-            }
-
-            if (position + 1 == array.Length) ChangeArrayLength(array.Length * 2);
-            array[++position] = value;
-            head = newValue;        }
-
-        public void AddLast(string value)
         {
             Node newValue = new Node(value);
             
@@ -52,6 +37,48 @@ namespace Aufgabe03_LinkedList
 
                 current.Successor = newValue;
 
+            }
+        }
+
+        // Indexer zum Zugreifen auf Elemente basierend auf ihrem Index
+        public string this[int index]
+        {
+            get
+            {
+                if (index < 0) throw new IndexOutOfRangeException("Index darf nicht negativ sein.");
+                Node current = head;
+                int currentIndex = 0;
+
+                while (current != null)
+                {
+                    if (currentIndex == index)
+                    {
+                        return current.Value;
+                    }
+                    current = current.Successor;
+                    currentIndex++;
+                }
+
+                throw new IndexOutOfRangeException("Index liegt außerhalb der Grenzen der Liste.");
+            }
+            set
+            {
+                if (index < 0) throw new IndexOutOfRangeException("Index darf nicht negativ sein.");
+                Node current = head;
+                int currentIndex = 0;
+
+                while (current != null)
+                {
+                    if (currentIndex == index)
+                    {
+                        current.Value = value;
+                        return;
+                    }
+                    current = current.Successor;
+                    currentIndex++;
+                }
+
+                throw new IndexOutOfRangeException("Index liegt außerhalb der Grenzen der Liste.");
             }
         }
     }
