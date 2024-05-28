@@ -41,7 +41,7 @@ namespace Aufgabe03_LinkedList
         }
 
         // Indexer zum Zugreifen auf Elemente basierend auf ihrem Index
-        public string this[int index]
+        public string this[int index]  // "this" keyword indicates that the method is an indexer
         {
             get
             {

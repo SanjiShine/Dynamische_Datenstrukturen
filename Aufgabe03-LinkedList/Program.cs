@@ -7,24 +7,24 @@ class Program
         LinkedList list = new LinkedList();
 
         // Elemente zur Liste hinzufügen
-        list.Add("Element 1");
-        list.Add("Element 2");
-        list.Add("Element 3");
+        list.Add("1.Apfel");
+        list.Add("2.Birne");
+        list.Add("3.Wassermelone");
 
         // Elemente über den Indexer ausgeben
         for (int i = 0; i < 3; i++)
         {
-            Console.WriteLine("Element an Index {0}: {1}", i, list[i]);
+            Console.WriteLine($"Element an Index {i} : {list[i]}");
         }
 
         // Wert eines Elements über den Indexer aktualisieren
-        list[1] = "Aktualisiertes Element 2";
+        list[1] = "2.Mango";
 
         // Aktualisierten Wert erneut ausgeben
         Console.WriteLine("Nach der Aktualisierung:");
         for (int i = 0; i < 3; i++)
         {
-            Console.WriteLine("Element an Index {0}: {1}", i, list[i]);
+            Console.WriteLine($"Element an Index {i} : {list[i]}");
         }
 
         // Test auf IndexOutOfRangeException
